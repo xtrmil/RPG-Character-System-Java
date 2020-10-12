@@ -1,0 +1,21 @@
+package main.java.items.weapon;
+
+import main.java.items.Item;
+import main.java.items.SLOT;
+
+public class Ranged extends Weapon implements Item {
+    private static WEAPONTYPE weaponType = WEAPONTYPE.RANGED;
+    private int baseDamage = 5;
+    private static  double damageMultiplier = 2.0;
+
+    public Ranged(String name, int level, SLOT slot) {
+        super(name, level,slot,damageMultiplier,weaponType);
+    }
+
+
+    @Override
+    public int getBaseDamage() {
+        return baseDamage+(3*getLevel());
+    }
+
+}
