@@ -1,19 +1,19 @@
 package main.java.items.armor;
 
 import main.java.items.Item;
-import main.java.items.ITEMTYPE;
-import main.java.items.SLOT;
+import main.java.items.ItemType;
+import main.java.items.Slot;
 
 public abstract class Armor implements Item{
 
     final private int baseBonusHealth,baseBonusStrength,baseBonusDexterity,baseBonusIntelligence;
     final private int levelBonusHealth,levelBonusStrength,levelBonusDexterity,levelBonusIntelligence;
     private int level;
-    private SLOT slot;
+    private Slot slot;
     private String name;
-    private ITEMTYPE itemType = ITEMTYPE.ARMOR;
-    protected Armor(String name,int level,SLOT slot, int baseBonusHealth,int baseBonusStrength,int baseBonusDexterity,int baseBonusIntelligence,
-                int levelBonusHealth,int levelBonusStrength,int levelBonusDexterity,int levelBonusIntelligence){
+    private ItemType itemType = ItemType.ARMOR;
+    protected Armor(String name, int level, Slot slot, int baseBonusHealth, int baseBonusStrength, int baseBonusDexterity, int baseBonusIntelligence,
+                    int levelBonusHealth, int levelBonusStrength, int levelBonusDexterity, int levelBonusIntelligence){
 
         this.name = name;
         this.level = level;
@@ -33,10 +33,10 @@ public abstract class Armor implements Item{
     public int getItemStrengthBonus(){ return baseBonusStrength + (levelBonusStrength * level); }
     public int getItemDexterityBonus(){ return baseBonusDexterity + (levelBonusDexterity * level); }
     public int getItemIntelligenceBonus(){ return baseBonusIntelligence + (levelBonusIntelligence * level); }
-    public ITEMTYPE getItemType() {
+    public ItemType getItemType() {
         return itemType;
     }
-    public SLOT getSlot(){ return slot; }
+    public Slot getSlot(){ return slot; }
 
     @Override
     public int getLevel() { return level; }

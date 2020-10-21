@@ -1,8 +1,8 @@
 package main.java.heroes;
 
 import main.java.items.Item;
-import main.java.items.ITEMTYPE;
-import main.java.items.SLOT;
+import main.java.items.ItemType;
+import main.java.items.Slot;
 import main.java.items.armor.*;
 import main.java.items.weapon.*;
 
@@ -19,8 +19,8 @@ public abstract class Hero {
     private int nextLevelExpRequirement = 100;
     private int totalExpNeeded = 100;
 
-    Map<SLOT, Armor> equippedArmor = new HashMap<>();
-    Map<SLOT, Weapon> equippedWeapon = new HashMap<>();
+    Map<Slot, Armor> equippedArmor = new HashMap<>();
+    Map<Slot, Weapon> equippedWeapon = new HashMap<>();
 
     protected Hero(int baseHealth, int baseStrength,int baseDexterity, int baseIntelligence,
                     int expHealth,int expStrength,int expDexterity,int expIntelligence){
@@ -37,9 +37,9 @@ public abstract class Hero {
     }
 
 
-    public void removeEquippedItem(SLOT slot){
+    public void removeEquippedItem(Slot slot){
 
-        if(slot == SLOT.MAINWEAPON){
+        if(slot == Slot.MAINWEAPON){
             equippedWeapon.remove(slot);
         }else{
             alterItemBonusStats(equippedArmor.get(slot),slot,false);
@@ -47,7 +47,7 @@ public abstract class Hero {
         }
     }
 
-    public int getDamage(SLOT slot){
+    public int getDamage(Slot slot){
 
 
         if (!equippedWeapon.containsKey(slot))
@@ -55,23 +55,23 @@ public abstract class Hero {
         Weapon currentWeapon = equippedWeapon.get(slot);
 
         int damage = 0;
-        if(currentWeapon.getWeapontype() == WEAPONTYPE.MELEE){
+        if(currentWeapon.getWeapontype() == WeaponType.MELEE){
             damage = currentWeapon.getBaseDamage()+(((int) (Math.floor(getStrength()*currentWeapon.getDamageMultiplier()))));
         }
-        if(currentWeapon.getWeapontype() == WEAPONTYPE.RANGED){
+        if(currentWeapon.getWeapontype() == WeaponType.RANGED){
             damage = currentWeapon.getBaseDamage()+(((int) (Math.floor(getDexterity()*currentWeapon.getDamageMultiplier()))));
         }
         return damage;
     }
 
 
-    public void alterItemBonusStats(Armor armor , SLOT slot,boolean increaseStats){
+    public void alterItemBonusStats(Armor armor , Slot slot, boolean increaseStats){
         double slotMultiplier = 1.0;
         if(armor != null) {
 
-            if(slot == SLOT.HEAD){
+            if(slot == Slot.HEAD){
                 slotMultiplier = 0.8;
-            }else if(slot == SLOT.LEGS){
+            }else if(slot == Slot.LEGS){
                 slotMultiplier = 0.6;
             }
             if(increaseStats) {
@@ -96,9 +96,9 @@ public abstract class Hero {
         setIntelligence(getIntelligence() + expIntelligence);
 
     }
-    public void putItemInSlot(Item item, SLOT slot,ITEMTYPE itemType){
+    public void putItemInSlot(Item item, Slot slot, ItemType itemType){
 
-        if(itemType == ITEMTYPE.WEAPON){
+        if(itemType == ItemType.WEAPON){
             equippedWeapon.put(slot, (Weapon) item);
         }else{
             equippedArmor.put(slot,(Armor) item);
@@ -127,7 +127,7 @@ public abstract class Hero {
     public int getNextLevelExpRequirement(){ return nextLevelExpRequirement; }
     public void setNextLevelExpRequirement(){ nextLevelExpRequirement = (int) Math.rint(nextLevelExpRequirement * 1.1); }
     public int getTotalExperienceNeeded(){ return totalExpNeeded; }
-    public Map<SLOT,Armor> getArmorMap(){ return equippedArmor; }
+    public Map<Slot,Armor> getArmorMap(){ return equippedArmor; }
 
     @Override
     public String toString(){

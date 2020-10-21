@@ -1,21 +1,21 @@
 package main.java.items.weapon;
 
 import main.java.items.Item;
-import main.java.items.ITEMTYPE;
-import main.java.items.SLOT;
+import main.java.items.ItemType;
+import main.java.items.Slot;
 
 
 public abstract class Weapon implements Item {
 
-    private SLOT slot;
-    private ITEMTYPE itemType = ITEMTYPE.WEAPON;
-    private WEAPONTYPE weapontype;
+    private Slot slot;
+    private ItemType itemType = ItemType.WEAPON;
+    private WeaponType weapontype;
     private String name;
     private int level;
     private double damageMultiplier;
 
 
-    protected Weapon(String name,int level, SLOT slot, double damageMultiplier,WEAPONTYPE weapontype){
+    protected Weapon(String name, int level, Slot slot, double damageMultiplier, WeaponType weapontype){
         this.name = name;
         this.level = level;
         this.slot = slot;
@@ -27,9 +27,9 @@ public abstract class Weapon implements Item {
     public double getDamageMultiplier(){
         return damageMultiplier;
     }
-    public SLOT getSlot(){ return slot; }
-    public ITEMTYPE getItemType() { return itemType; }
-    public WEAPONTYPE getWeapontype() { return weapontype; }
+    public Slot getSlot(){ return slot; }
+    public ItemType getItemType() { return itemType; }
+    public WeaponType getWeapontype() { return weapontype; }
     public int getLevel(){ return level; }
 
     @Override

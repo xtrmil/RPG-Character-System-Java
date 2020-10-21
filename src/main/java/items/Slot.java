@@ -1,6 +1,6 @@
 package main.java.items;
 
-public enum SLOT {
+public enum Slot {
     HEAD("Head"),
     BODY("Body"),
     LEGS("Legs"),
@@ -8,7 +8,7 @@ public enum SLOT {
 
     public final String label;
 
-    SLOT(String label) {
+    Slot(String label) {
         this.label = label;
     }
 }

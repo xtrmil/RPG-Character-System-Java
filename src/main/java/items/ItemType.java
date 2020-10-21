@@ -1,6 +1,6 @@
 package main.java.items;
 
-public enum ITEMTYPE {
+public enum ItemType {
     WEAPON,
     ARMOR
 }

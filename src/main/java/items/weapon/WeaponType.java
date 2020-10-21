@@ -1,6 +1,6 @@
 package main.java.items.weapon;
 
-public enum WEAPONTYPE {
+public enum WeaponType {
     MELEE,
     RANGED
 }

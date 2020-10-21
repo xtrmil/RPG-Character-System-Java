@@ -1,7 +1,7 @@
 package main.java.items.armor;
 
 import main.java.items.Item;
-import main.java.items.SLOT;
+import main.java.items.Slot;
 
 public class Cloth extends Armor implements Item {
 
@@ -15,7 +15,7 @@ public class Cloth extends Armor implements Item {
     final private static int levelBonusDexterity = 1;
     final private static int levelBonusIntelligence = 2;
 
-    public Cloth(String name, int level, SLOT slot) {
+    public Cloth(String name, int level, Slot slot) {
         super(name, level, slot, baseBonusHealth, baseBonusStrength, baseBonusDexterity, baseBonusIntelligence,
                 levelBonusHealth, levelBonusStrength, levelBonusDexterity, levelBonusIntelligence);
     }
